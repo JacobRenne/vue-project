@@ -18,9 +18,10 @@
         </nav>
   </header>
 
+  <div style="height: 59px;"></div>
+
   <main>
-    <router-view>
-    </router-view>
+    <router-view></router-view>
   </main>
   
 

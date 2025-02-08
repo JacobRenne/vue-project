@@ -8,12 +8,12 @@ export default createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      component: Library,
-      path: '/'
+        component: Library,
+        path: '/'
     },
     {
         component: Search,
-        path: '/Search'
+        path: '/search'
     },
   ]
 })
