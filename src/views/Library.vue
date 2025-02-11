@@ -1,18 +1,54 @@
-<script>
-    
+<script setup>
+import { ref } from 'vue'
 
+const books = ref([
+    {
+        title: "Fast cars",
+        author: "Peter",
+        readStatus: false,
+        id: 15,
+    },
+    {
+        title: "Fast cars",
+        author: "Peter",
+        readStatus: false,
+        id: 14,
+    },
+    {
+        title: "Fast cars",
+        author: "Peter",
+        readStatus: false,
+        id: 13,
+    }
+])
+
+function changeRead(id) {
+
+    books.value.forEach((book) => {
+        if (book.id === id) {
+            book.readStatus = !book.readStatus
+        }
+        console.log(book.readStatus)
+    })
+
+}
 
 
 </script>
 
 <template>
     <h1 class="page-title">Library</h1>
-    <div class="book-card">
-        <div class="book-info">
-            <h2 class="book-title">Book Title</h2>
-            <p class="book-author">by Author Name</p>
+
+    <div id="book-list">
+        <div class="book-card" v-for="book in books">
+            <div class="book-info">
+                <h2 class="book-title"> {{ book.title }}</h2>
+                <p class="book-author">by {{ book.author }}</p>
+            </div>
+            <button class="read-toggle" @click="changeRead(book.id)"> 
+                {{ book.readStatus ? "Read" : "Not Read" }}
+            </button>
         </div>
-        <button class="read-toggle" onclick="toggleRead(this)">Not Read</button>
     </div>
 
 </template>
@@ -22,6 +58,13 @@
 .page-title {
     color: white;
     text-align: center;
+}
+
+#book-list {
+    margin: 0 10%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .book-card {
