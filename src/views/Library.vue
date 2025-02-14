@@ -40,7 +40,7 @@ function removeBook(id) {
     <form @submit.prevent="addBookForm" class="book-form">
 		<div>
 			<label for="title-input">Book Title</label>
-        	<input v-model="title" type="text" placeholder="Book Title" id="title-input">
+        	<input v-model="title" type="text" placeholder="Book Title" id="title-input" required>
 		</div>
 		
 		<div>
@@ -51,7 +51,7 @@ function removeBook(id) {
     </form>
 
     <div id="book-list">
-        <div class="book-card" v-for="book in library">
+        <div class="book-card" v-for="book in library" :key="book.id">
             <div class="book-info">
                 <h2 class="book-title"> {{ book.title }}</h2>
                 <p class="book-author">by {{ book.author }}</p>
