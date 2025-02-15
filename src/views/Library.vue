@@ -23,7 +23,6 @@ function changeRead(id) {
         if (book.id === id) {
             book.readStatus = !book.readStatus
         }
-        console.log(book.readStatus)
     })
 }
 
@@ -50,7 +49,7 @@ function removeBook(id) {
     	<button type="submit">Add Book</button>
     </form>
 
-    <div id="book-list">
+    <div class="book-list">
         <div class="book-card" v-for="book in library" :key="book.id">
             <div class="book-info">
                 <h2 class="book-title"> {{ book.title }}</h2>
@@ -114,11 +113,12 @@ function removeBook(id) {
 	background: #45a049;
 }
 
-#book-list {
+.book-list {
 	margin: 0 10%;
 	display: flex;
 	justify-content: center;
 	gap: 20px;
+	flex-wrap: wrap;
 }
 
 .book-card {
@@ -126,7 +126,8 @@ function removeBook(id) {
 	border-radius: 15px; 
 	padding: 15px;
 	width: 130px;
-	height: 150px;
+	min-height: 180px;
+	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
