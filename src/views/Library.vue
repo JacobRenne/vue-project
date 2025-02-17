@@ -3,6 +3,7 @@ import { addBook } from '../Composables.vue'
 import { library } from '../Composables.vue'
 import { ref } from 'vue'
 import { computed } from 'vue'
+import bookCard from '../bookCard.vue'
 
 const title = ref('')
 const author = ref('')
@@ -56,18 +57,13 @@ const bookCount = computed(() => library.value.length)
 	<p v-if="library.length === 0" style="color: white;">Your library is empty. Consider adding some books!</p>
 
     <div class="book-list">
-        <div class="book-card" v-for="book in library" :key="book.id">
-            <div class="book-info">
-                <h2 class="book-title"> {{ book.title }}</h2>
-                <p class="book-author">by {{ book.author }}</p>
-            </div>
-            <button class="read-toggle" @click="changeRead(book.id)" :style="{ background: book.readStatus ? 'green' : ''}"> 
-                {{ book.readStatus ? "Read" : "Not Read" }}
-            </button>
-			<button class="remove-button" @click="removeBook(book.id)">
-				REMOVE
-			</button>
-        </div>
+        <bookCard 
+		v-for="book in library" 
+		:key="book.id"
+		:book="book"
+		@change-read="changeRead"
+		@remove-book="removeBook"
+		/>
     </div>
 
 </template>
