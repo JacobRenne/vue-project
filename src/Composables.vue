@@ -1,10 +1,16 @@
 <script>
 import { v4 as uuidv4 } from 'uuid'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 
 export const library = ref([])
 
+watch(library, () => {
+        localStorage.setItem("library", JSON.stringify(library.value))
+        console.log("library changed")
+    }, 
+    { deep: true }
+)
 
 export function addBook(title, author) {
     library.value.push({
@@ -14,7 +20,6 @@ export function addBook(title, author) {
         id: uuidv4(),
     })
 
-    localStorage.setItem("library", JSON.stringify(library.value))
 }
     
 

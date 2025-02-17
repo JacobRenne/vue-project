@@ -11,7 +11,7 @@ const searchArray = ref([
 
 async function searchBooks() {
     let response = await axios.get(`https://openlibrary.org/search.json?q=${search.value}&limit=20`)
-    searchArray.value = response.data.docs
+    searchArray.value = await response.data.docs
     search.value = ''
 }
 

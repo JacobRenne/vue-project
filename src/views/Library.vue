@@ -2,6 +2,7 @@
 import { addBook } from '../Composables.vue'
 import { library } from '../Composables.vue'
 import { ref } from 'vue'
+import { computed } from 'vue'
 
 const title = ref('')
 const author = ref('')
@@ -28,8 +29,9 @@ function changeRead(id) {
 
 function removeBook(id) {
 	library.value = library.value.filter((book) => book.id !== id)
-	localStorage.setItem("library", JSON.stringify(library.value))
 }
+
+const bookCount = computed(() => library.value.length)
 
 </script>
 
@@ -48,6 +50,10 @@ function removeBook(id) {
 		</div>
     	<button type="submit">Add Book</button>
     </form>
+
+	<h3 style="color: white;">Total Books: {{ bookCount }}</h3>
+
+	<p v-if="library.length === 0" style="color: white;">Your library is empty. Consider adding some books!</p>
 
     <div class="book-list">
         <div class="book-card" v-for="book in library" :key="book.id">
