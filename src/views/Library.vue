@@ -3,7 +3,7 @@ import { addBook } from '../Composables.vue'
 import { library } from '../Composables.vue'
 import { ref } from 'vue'
 import { computed } from 'vue'
-import bookCard from '../bookCard.vue'
+import BookCard from '../BookCard.vue'
 
 const title = ref('')
 const author = ref('')
@@ -34,6 +34,7 @@ function removeBook(id) {
 
 const bookCount = computed(() => library.value.length)
 
+
 </script>
 
 <template>
@@ -57,7 +58,7 @@ const bookCount = computed(() => library.value.length)
 	<p v-if="library.length === 0" style="color: white;">Your library is empty. Consider adding some books!</p>
 
     <div class="book-list">
-        <bookCard 
+        <BookCard 
 		v-for="book in library" 
 		:key="book.id"
 		:book="book"
@@ -108,7 +109,7 @@ const bookCount = computed(() => library.value.length)
 	color: white;
 	border: none;
 	cursor: pointer;
-	border-radius: 15px;
+	border-radius: 5px;
 }
 
 .book-form button:hover {

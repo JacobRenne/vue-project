@@ -5,9 +5,13 @@ import { ref, watch } from 'vue'
 
 export const library = ref([])
 
+if (JSON.parse(localStorage.getItem('library'))) {
+    library.value = JSON.parse(localStorage.getItem('library'))
+}
+
+
 watch(library, () => {
         localStorage.setItem("library", JSON.stringify(library.value))
-        console.log("library changed")
     }, 
     { deep: true }
 )
