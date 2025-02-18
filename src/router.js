@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Library from './views/Library.vue'
 import Search from './views/Search.vue'
-import BookDetails from './views/bookDetails.vue'
+import BookDetails from './views/BookDetails.vue'
 
 
 export default createRouter({
